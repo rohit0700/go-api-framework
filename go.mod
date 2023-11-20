@@ -1,4 +1,4 @@
-module go-api-framework
+module github.com/rohit0700/go-api-framework
 
 go 1.20
 
