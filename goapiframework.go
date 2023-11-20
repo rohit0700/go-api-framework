@@ -2,11 +2,11 @@ package goapiframework
 
 import (
 	"database/sql"
-	"go-api-framework/config"
-	"go-api-framework/database"
-	"go-api-framework/errors"
-	"go-api-framework/http"
-	"go-api-framework/logging"
+	"github.com/rohit0700/go-api-framework/config"
+	"github.com/rohit0700/go-api-framework/database"
+	"github.com/rohit0700/go-api-framework/errors"
+	"github.com/rohit0700/go-api-framework/http"
+	"github.com/rohit0700/go-api-framework/logging"
 )
 
 type Framework struct {
@@ -35,7 +35,7 @@ func NewFramework() (*Framework, error) {
 	// Initialize HTTP router
 	router := http.InitRouter(cfg)
 
-	logging.InfoLogger.Println("Framework initialized successfully")
+	logging.InfoLogger.Println("Framework initialized successfully", router)
 
 	return &Framework{
 		Config: cfg,

@@ -3,7 +3,7 @@ package database
 import (
 	"database/sql"
 	"fmt"
-	"go-api-framework/config"
+	"github.com/rohit0700/go-api-framework/config"
 
 	"github.com/Masterminds/squirrel"
 	_ "github.com/lib/pq"

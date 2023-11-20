@@ -1,7 +1,7 @@
 package http
 
 import (
-	"go-api-framework/config"
+	"github.com/rohit0700/go-api-framework/config"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
