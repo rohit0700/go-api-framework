@@ -2,6 +2,8 @@ package goapiframework
 
 import (
 	"database/sql"
+
+	"github.com/gin-gonic/gin"
 	"github.com/rohit0700/go-api-framework/config"
 	"github.com/rohit0700/go-api-framework/database"
 	"github.com/rohit0700/go-api-framework/errors"
@@ -12,6 +14,7 @@ import (
 type Framework struct {
 	Config *config.Config
 	DB     *sql.DB
+	Router *gin.Engine
 }
 
 func NewFramework() (*Framework, error) {
@@ -35,10 +38,15 @@ func NewFramework() (*Framework, error) {
 	// Initialize HTTP router
 	router := http.InitRouter(cfg)
 
-	logging.InfoLogger.Println("Framework initialized successfully", router)
+	logging.InfoLogger.Println("Framework initialized successfully")
 
 	return &Framework{
 		Config: cfg,
 		DB:     db,
+		Router: router,
 	}, nil
+}
+
+func (f *Framework) GetRouter() *gin.Engine {
+	return f.Router
 }
