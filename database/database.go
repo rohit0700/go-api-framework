@@ -3,6 +3,7 @@ package database
 import (
 	"database/sql"
 	"fmt"
+
 	"github.com/rohit0700/go-api-framework/config"
 
 	"github.com/Masterminds/squirrel"
@@ -12,7 +13,17 @@ import (
 var db *sql.DB
 
 func InitDatabase(cfg *config.Config) (*sql.DB, error) {
-	connectionString := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", cfg.Database.User, cfg.Database.Password, cfg.Database.Host, cfg.Database.Port, cfg.Database.Name)
+	// this is for MySQL
+	// connectionString := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", cfg.Database.User, cfg.Database.Password, cfg.Database.Host, cfg.Database.Port, cfg.Database.Name)
+	//for PostgreSQL
+
+	connectionString := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable",
+		cfg.Database.Host,
+		cfg.Database.Port,
+		cfg.Database.User,
+		cfg.Database.Password,
+		cfg.Database.Name,
+	)
 
 	conn, err := sql.Open(cfg.Database.Driver, connectionString)
 	if err != nil {
